@@ -1,5 +1,6 @@
 @startuml getTrickList-Request
 !theme toy
+skinparam linetype ortho
 title "getTrickList /api/tricks GET Request"
 
 json Data {
@@ -15,9 +16,23 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note top of Data
+    Optional fields: **filter**, **search**
+end note
+
+note bottom of Data
+    In **filter**, only one spot can be chosen to avoid confusion.
+    All tricks landed atleast in that spot are retrived.
+end note
+
+note left of Data
+    By chunks: **limit**, **offset** required
+end note
 @enduml
 @startuml getTrickList-Response
 !theme toy
+skinparam linetype ortho
 title "getTrickList /api/tricks GET Response"
 
 json Data {

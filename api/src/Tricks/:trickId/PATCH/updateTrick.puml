@@ -1,5 +1,6 @@
 @startuml updateTrick-Request
 !theme toy
+skinparam linetype ortho
 title "updateTrick /api/tricks/:trickId PATCH Request"
 
 json Data {
@@ -17,18 +18,44 @@ json Data {
     ' Look at `Tricks/POST/addNewTrick.puml` for explanations
     "confirmation": ""
 }
+note top of Data
+    Optional fields: **name**, **spots**, **pinned**
+end note
+
+note left of Data
+    If **pinned** = true, the trick is pinned under the bio (maximum 5 tricks).
+end note
+
+note bottom of Data
+    **confirmation** should be true when the user wants to actually post the trick,
+    while when creating the trick, a request with **confirmation** = false 
+    tells the server to calculate the points of the trick, keep them stored in a 
+    temporary table, and send them to the frontend for preview.
+    
+    This way we avoid:
+    - sending the points from the client, so we are sure they are genuine
+    - calculating the points twice for preview and creation
+end note
 
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+
+Data *-- Auth
+
 @enduml
 @startuml updateTrick-Response
 !theme toy
+skinparam linetype ortho
 title "updateTrick /api/tricks/:trickId PATCH Response"
 json Data {
     ' Optional
     "points": ""
 }
+
+note top of Data
+    Optional fields: **points**
+end note
 @enduml

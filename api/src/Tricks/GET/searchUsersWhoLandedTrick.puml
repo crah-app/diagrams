@@ -1,5 +1,6 @@
 @startuml searchUsersWhoLandedTrick-Request
 !theme toy
+skinparam linetype ortho
 title "searchUsersWhoLandedTrick /api/tricks GET Request"
 
 json Data {
@@ -12,10 +13,19 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note top of Data
+    Optional fields: **filter**
+end note
+
+note bottom of Data
+    By chunks: **limit**, **offset** required
+end note
 @enduml
 
 @startuml searchUsersWhoLandedTrick-Response
 !theme toy
+skinparam linetype ortho
 title "searchUsersWhoLandedTrick /api/tricks GET Response"
 
 package "users.zip" {
@@ -32,6 +42,8 @@ package "users.zip" {
         folder "pfps" {
             file "userId-pfp.png"
         }
+
+        "users.json" -o "userId-pfp.png"
     }
     
     json "tricks.json" {
@@ -50,6 +62,12 @@ package "users.zip" {
             }
         ]
     }
+
+    "tricks.json" --o "users.json"
+    note right of "tricks.json"
+        The name of the trick is
+        already known to the client
+    end note
 }
 
 @enduml
