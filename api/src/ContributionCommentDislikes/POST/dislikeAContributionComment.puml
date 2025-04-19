@@ -1,0 +1,21 @@
+@startuml dislikeAContributionComment-Request
+!theme toy
+title "dislikeAContributionComment /api/contributionCommentDislikes POST Request"
+
+json Data {
+    "contributionCommentId": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml dislikeAContributionComment-Response
+!theme toy
+title "dislikeAContributionComment /api/contributionCommentDislikes POST Response"
+json Data {
+    "contributionCommentDislikeId": ""
+}
+@enduml

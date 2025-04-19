@@ -1,0 +1,55 @@
+@startuml searchUsersWhoLandedTrick-Request
+!theme toy
+title "searchUsersWhoLandedTrick /api/tricks GET Request"
+
+json Data {
+    "name": "",
+    ' Optional
+    "filter": {
+        "spot": ""
+    },
+    "orderBy": "",
+    "limit": "",
+    "offset": ""
+}
+@enduml
+
+@startuml searchUsersWhoLandedTrick-Response
+!theme toy
+title "searchUsersWhoLandedTrick /api/tricks GET Response"
+
+package "users.zip" {
+    folder "users" {
+        json "users.json" {
+            "users": [
+                {
+                    "userId": "",
+                    "username": ""
+                }
+            ]
+        }
+
+        folder "pfps" {
+            file "userId-pfp.png"
+        }
+    }
+    
+    json "tricks.json" {
+        "tricks": [
+            {
+                "trickId": "",
+                "userId": "",
+                ' Name is already known to the client.
+                "points": "",
+                "spots": [
+                    {
+                        "spot": "",
+                        "date": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+@enduml

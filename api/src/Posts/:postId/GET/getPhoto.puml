@@ -1,0 +1,111 @@
+@startuml getPhoto-Request
+!theme toy
+title "getPhoto /api/posts/:postId GET Request"
+json Data {
+    ' Optional
+    ' If missing, the full data is retrieved, e.g when accessing the post from a direct link
+    ' Othervise we assume that the client already owns partial data
+    ' about the post, as most part of the metadata, the cover ecc.
+    ' 
+    ' previousView should be set to the latest usecase, like
+    ' `searchPosts` or `getNotifications` or `getPostsOfUser`
+    ' and the server will respond appropriately.
+    "previousView": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml getPhoto-Response
+!theme toy
+title "getPhoto /api/posts/:postId GET Response"
+
+package "post.zip" {
+
+    ' Diff
+    folder "users" {
+        folder "pfps" {
+            file "userId-pfp.png"
+        }
+
+        json "users.json" {
+            "users": [
+                {
+                    "userId": "",
+                    "username": ""
+                }
+            ]
+        }
+    }
+
+    ' Diff (for `getNotifications`)
+    file "postId-image-0.png"
+    ' Diff
+    file "postId-image-1.png"
+    ' Diff
+    file "postId-image-3.png"
+
+    json "post.json" {
+        "postId": "",
+        "userId": "",
+        "title": "",
+        "type": "",
+        "timestamp": "",
+        ' Diff (for `getNotifications`)
+        "description": "",
+        ' Diff (for `getNotifications`)
+        "likes": "",
+        ' Diff (for `getNotifications`)
+        "comments": "",
+        ' Diff (for `getNotifications`)
+        "views": "",
+        ' Diff
+        "partecipants": [
+            {
+                "role": "",
+                "userId": ""
+            }
+        ],
+        ' Diff (for `getNotifications`)
+        "tags": [],
+        ' Diff
+        "imageIdsSequence": "",
+        ' Optional (if auth is provided)
+        ' Necessary if the user wants to edit the post, to name the new images
+        "imageIdsCounter": "",
+        ' Optional (if auth is provided & the user has liked)
+        "userLikeId": "",
+        ' Optional (if auth is provided & the user has reacted)
+        "userReaction": {
+            ' Necessary to know wich emoji to highlight
+            "emojiId": "",
+            ' Necessary if the user decides to remove it.
+            "reactionId": ""
+        },
+        ' Grouped reactions
+        "reactions": [
+            {
+                "emojiId": "",
+                "counter": ""
+            }
+        ]
+    }
+
+    ' Diff
+    ' First chunk of comments
+    json "comments.json" {
+        "comments": {
+            "commentId": "",
+            "userId": "",
+            "timestamp": "",
+            "text": "",
+            "likes": ""
+        },
+        "limit": "",
+        "offset": ""
+    }
+}
+@enduml

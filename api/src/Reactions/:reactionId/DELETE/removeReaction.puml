@@ -1,0 +1,14 @@
+@startuml removeReaction-Request
+!theme toy
+title "removeReaction /api/reactions/:reactionId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeReaction-Response
+!theme toy
+title "removeReaction /api/reactions/:reactionId DELETE Response"
+@enduml

@@ -1,0 +1,43 @@
+@startuml getCommentsOfUser-Request
+title "getCommentsOfUser /api/comments GET Request"
+
+
+json Data {
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getCommentsOfUser-Response
+title "getCommentsOfUser /api/comments GET Response"
+
+package "comments.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    folder "covers" {
+        file "postId-cover.png"
+    }
+
+    json "comments.json" {
+        "comments": [
+            {
+                "commentId": "",
+                "post": {
+                    "postId": "",
+                    "title": "",
+                    "type": "",
+                    "user": {
+                        "userId": "",
+                        "username": ""
+                    }
+                },
+                "text": "",
+                "timestamp": "",
+                "likes": ""
+            }
+        ]
+    }
+}
+@enduml

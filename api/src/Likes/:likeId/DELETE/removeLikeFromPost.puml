@@ -1,0 +1,13 @@
+@startuml removeLikeFromPost-Request
+!theme toy
+title "removeLikeFromPost /api/likes/:likeId DELETE Request"
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeLikeFromPost-Response
+!theme toy
+title "removeLikeFromPost /api/likes/:likeId DELETE Response"
+@enduml

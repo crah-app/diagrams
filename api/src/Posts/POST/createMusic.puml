@@ -1,0 +1,40 @@
+@startuml createMusic-Request
+!theme toy
+title "createMusic /api/posts POST Request"
+
+package "post.zip" {
+    file "post-cover.png"
+    file "post.mp3"
+
+    json "post.json" {
+        "title": "",
+        "type": "",
+        "description": "",
+        ' People who worked on the music project
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ],
+        "tags": []
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml createMusic-Response
+!theme toy
+title "createMusic /api/posts POST Response"
+
+json Data {
+    "postId": ""
+}
+@enduml
+
+

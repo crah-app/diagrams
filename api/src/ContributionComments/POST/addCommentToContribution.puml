@@ -1,0 +1,22 @@
+@startuml addCommentToContribution-Request
+!theme toy
+title "addCommentToContribution /api/contributionComments POST Request"
+json Data {
+    "postId": "",
+    "text": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml addCommentToContribution-Response
+!theme toy
+title "addCommentToContribution /api/contributionComments POST Response"
+
+json Data {
+    "contributionCommentId": ""
+}
+@enduml

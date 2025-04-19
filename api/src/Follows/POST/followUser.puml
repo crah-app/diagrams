@@ -1,0 +1,21 @@
+@startuml followUser-Request
+!theme toy
+title "followUser /api/follows POST Request"
+
+json Data {
+    "userId": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml followUser-Response
+!theme toy
+title "followUser /api/follows POST Response"
+json Data {
+    "followId": ""
+}
+@enduml

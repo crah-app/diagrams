@@ -1,0 +1,18 @@
+@startuml editContributionComment-Request
+!theme toy
+title "editContributionComment /api/contributionComments/:contributionCommentId PUT Request"
+
+json Data {
+    "text": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml editContributionComment-Response
+!theme toy
+title "editContributionComment /api/contributionComments/:contributionCommentId PUT Response"
+@enduml

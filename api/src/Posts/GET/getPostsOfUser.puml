@@ -1,0 +1,48 @@
+@startuml getPostsOfUser-Request
+!theme toy
+title "getPostsOfUser /api/posts GET Request"
+
+json Data {
+    "userId": "",
+    "filter": {
+        "type": "",
+        "tags": []
+    },
+    "orderBy": "",
+    "search": "",
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getPostsOfUser-Response
+!theme toy
+title "getPostsOfUser /api/posts GET Response"
+
+package "posts.zip" {
+    json "posts.json" {
+        "posts": [
+            {
+                "postId": "",
+                ' userId is already known to the client
+                "title": "",
+                "type": "",
+                "description": "",
+                "timestamp": "",
+                ' Optional (only for Music and Video)
+                "duration": "",
+                "likes": "",
+                "comments": "",
+                "views": "",
+                ' Optional (only for Articles)
+                "contributions": ""
+            }
+        ]
+    }
+
+    folder "covers" {
+        file "postId-cover.png"
+        ' Photo posts use the first image in the sequence as cover
+        file "postId-image-0.png"
+    }
+}
+@enduml

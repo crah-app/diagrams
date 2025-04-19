@@ -1,0 +1,25 @@
+@startuml addContributionToArticle-Request
+!theme toy
+title "addContributionToArticle /api/contributions POST Request"
+
+json Data {
+    "postId": "",
+    "title": "",
+    "text": "",
+    "tags": []
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml addContributionToArticle-Response
+!theme toy
+title "addContributionToArticle /api/contributions POST Response"
+
+json Data {
+    "contributionId": ""
+}
+@enduml

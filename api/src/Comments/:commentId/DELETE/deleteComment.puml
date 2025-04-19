@@ -1,0 +1,14 @@
+@startuml deleteComment-Request
+!theme toy
+title "deleteComment /api/comments/:commentId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml deleteComment-Response
+!theme toy
+title "deleteComment /api/comments/:commentId DELETE Response"
+@enduml

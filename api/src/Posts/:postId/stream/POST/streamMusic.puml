@@ -1,0 +1,16 @@
+@startuml streamMusic-Request
+!theme toy
+title "streamMusic /api/posts/:postId/stream POST Request"
+
+file "postId.mp3"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml streamMusic-Response
+!theme toy
+title "streamMusic /api/posts/:postId/stream POST Response"
+@enduml

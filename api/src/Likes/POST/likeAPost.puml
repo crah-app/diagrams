@@ -1,0 +1,22 @@
+@startuml likeAPost-Request
+!theme toy
+title "likeAPost /api/likes POST Request"
+
+json Data {
+    "postId": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml likeAPost-Response
+!theme toy
+title "likeAPost /api/likes POST Response"
+
+json Data {
+    "likeId": ""
+}
+@enduml

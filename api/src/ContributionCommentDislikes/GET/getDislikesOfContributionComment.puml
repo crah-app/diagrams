@@ -1,0 +1,31 @@
+@startuml getDislikesOfContributionComment-Request
+!theme toy
+title "getDislikesOfContributionComment /api/contributionCommentDislikes GET Request"
+
+json Data {
+    "contributionCommentId": ""
+}
+@enduml
+@startuml getDislikesOfContributionComment-Response
+!theme toy
+title "getDislikesOfContributionComment /api/contributionCommentDislikes GET Response"
+
+package "contributionCommentDislikes.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "contributionCommentDislikes.json" {
+        "contributionCommentDislikes": [
+            {
+                "contributionCommentDislikeId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ]
+    }
+}
+@enduml

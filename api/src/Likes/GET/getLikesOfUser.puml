@@ -1,0 +1,41 @@
+@startuml getLikesOfUser-Request
+!theme toy
+title "getLikesOfUser /api/likes GET Request"
+
+json Data {
+    "userId": "",
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getLikesOfUser-Response
+!theme toy
+title "getLikesOfUser /api/likes GET Response"
+
+package "likes.zip" {
+    
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    folder "covers" {
+        file "postId-cover.png"
+    }
+
+    json "likes.json" {
+        "likes": [
+            {
+                "likeId": "",
+                "post": {
+                    "postId": "",
+                    "userId": "",
+                    "title": "",
+                    "type": "",
+                    "duration": ""
+                },
+                "timestamp": ""
+            }
+        ]
+    }
+}
+@enduml

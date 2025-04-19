@@ -1,0 +1,38 @@
+@startuml getReactionsOfPost-Request
+!theme toy
+title "getReactionsOfPost /api/reactions GET Request"
+
+json Data {
+    "postId": "",
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getReactionsOfPost-Response
+!theme toy
+title "getReactionsOfPost /api/reactions GET Response"
+
+package "reactions.zip" {
+    folder "users" {
+        folder "pfps" {
+            file "userId-pfp.png"
+        }
+
+        json "users.json" {
+            "userId": "",
+            "username": ""
+        }
+    }
+
+    json "reactions.json" {
+        "reactions": [
+            {
+                "reactionId": "",
+                "postId": "",
+                "userId": "",
+                "emojiId": ""
+            }
+        ]
+    }
+}
+@enduml

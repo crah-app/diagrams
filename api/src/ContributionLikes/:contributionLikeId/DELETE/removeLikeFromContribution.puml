@@ -1,0 +1,14 @@
+@startuml removeLikeFromContribution-Request
+!theme toy
+title "removeLikeFromContribution /api/contributionLikes/:contributionLikeId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeLikeFromContribution-Response
+!theme toy
+title "removeLikeFromContribution /api/contributionLikes/:contributionLikeId DELETE Response"
+@enduml

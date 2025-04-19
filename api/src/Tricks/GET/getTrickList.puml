@@ -1,0 +1,38 @@
+@startuml getTrickList-Request
+!theme toy
+title "getTrickList /api/tricks GET Request"
+
+json Data {
+    "userId": "",
+    ' Points, ...
+    "orderBy": "",
+    "search": "",
+    "filter": {
+        ' For filtering, only one spot can be chosen to avoid confusion.
+        ' All tricks landed atleast in that spot are retrived
+        "spot": ""
+    },
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getTrickList-Response
+!theme toy
+title "getTrickList /api/tricks GET Response"
+
+json Data {
+    "tricks": [
+        {
+            "trickId": "",
+            "name": "",
+            "points": "",
+            "spots": [
+                {
+                    "spot": "",
+                    "date": ""
+                }
+            ]
+        }
+    ]
+}
+@enduml

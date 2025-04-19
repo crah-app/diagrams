@@ -1,0 +1,39 @@
+@startuml getFriendsOfUser-Request
+!theme toy
+title "getFriendsOfUser /api/friends GET Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+
+json Data {
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getFriendsOfUser-Response
+!theme toy
+title "getFriendsOfUser /api/friends GET Response"
+
+package "friends.zip" {
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "friends.json" {
+        "friends": [
+            {
+                "friendId": "",
+                "timestamp": "",
+                "user": {
+                    ' Either UserAId or UserBId in the database
+                    "userId": "",
+                    "username": ""
+                }
+            }  
+        ]
+    }
+}
+@enduml

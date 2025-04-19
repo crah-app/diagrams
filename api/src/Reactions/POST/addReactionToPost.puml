@@ -1,0 +1,23 @@
+@startuml addReactionToPost-Request
+!theme toy
+title "addReactionToPost /api/reactions POST Request"
+
+json Data {
+    "emojiId": "",
+    "postId": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml addReactionToPost-Response
+!theme toy
+title "addReactionToPost /api/reactions POST Response"
+
+json Data {
+    "reactionId": ""
+}
+@enduml

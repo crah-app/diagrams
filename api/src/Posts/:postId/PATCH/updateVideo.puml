@@ -1,0 +1,43 @@
+@startuml updateVideo-Request
+!theme toy
+title "updateVideo /api/posts/:postId PATCH Request"
+
+package "postUpdate.zip" {
+    ' Optional (cover replacement)
+    file "postId-cover.png"
+
+    ' Optional (video replacement)
+    file "postId.mp4"
+
+    json "postUpdate.json" {
+        ' Optional
+        "title": "",
+        ' Optional
+        "description": "",
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "tags": [],
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ]
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml updateVideo-Response
+!theme toy
+title "updateVideo /api/posts/:postId PATCH Response"
+@enduml

@@ -1,0 +1,34 @@
+@startuml updateTrick-Request
+!theme toy
+title "updateTrick /api/tricks/:trickId PATCH Request"
+
+json Data {
+    ' Optional
+    "name": "",
+    ' Optional
+    "spots": [
+        {
+            "spot": "",
+            "date": ""
+        }
+    ],
+    ' Optional (If true pins the trick under the bio, max 5)
+    "pinned": "",
+    ' Look at `Tricks/POST/addNewTrick.puml` for explanations
+    "confirmation": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml updateTrick-Response
+!theme toy
+title "updateTrick /api/tricks/:trickId PATCH Response"
+json Data {
+    ' Optional
+    "points": ""
+}
+@enduml

@@ -1,0 +1,48 @@
+@startuml updateArticle-Request
+!theme toy
+title "updateArticle /api/posts/:postId PATCH Request"
+
+package "postUpdate.zip" {
+    
+    ' Optional (cover replacement)
+    file "postId-cover.png"
+    ' Optional (any update in the article)
+    file "postId.md"
+
+    ' Optional (new image)
+    file "post-image-4.png"
+    ' Optional (new image)
+    file "post-image-5.jpg"
+
+    json "postUpdate.json" {
+        ' Optional
+        "title": "",
+        ' Optional
+        "description": "",
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "tags": [],
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ]
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml updateArticle-Response
+!theme toy
+title "updateArticle /api/posts/:postId PATCH Response"
+@enduml

@@ -1,0 +1,54 @@
+@startuml getContributionsOfArticle-Request
+!theme toy
+title "getContributionsOfArticle /api/contributions GET Request"
+
+json Data {
+    "postId": "",
+    "offset": "",
+    "limit": ""
+}
+@enduml
+@startuml getContributionsOfArticle-Response
+!theme toy
+title "getContributionsOfArticle /api/contributions GET Response"
+
+package "contributions.zip" {
+    folder "pfps" {
+        file "userId-pfp.png"    
+    }
+
+    json "contributions.json" {
+        "contributions": [
+            {
+                "contributionId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "title": "",
+                "text": "",
+                "tags": [],
+                "timestamp": "",
+                ' Boolean value: if applied it means the modifications proposed have been already
+                ' applied to the post.
+                "applied": "",
+                "likes": "",
+                "dislikes": "",
+                "comments": [
+                    {
+                        "commentId": "",
+                        "text": "",
+                        "timestamp": "",
+                        "user": {
+                            "userId": "",
+                            "username": ""
+                        },
+                        "likes": "",
+                        "dislikes": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
+@enduml

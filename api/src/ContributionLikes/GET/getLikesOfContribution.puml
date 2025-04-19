@@ -1,0 +1,32 @@
+@startuml getLikesOfContribution-Request
+!theme toy
+title "getLikesOfContribution /api/contributionLikes GET Request"
+
+json Data {
+    "contributionId": ""
+}
+
+@enduml
+@startuml getLikesOfContribution-Response
+!theme toy
+title "getLikesOfContribution /api/contributionLikes GET Response"
+
+package "contributionLikes.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "contributionLikes.json" {
+        "contributionLikes": [
+            {
+                "contributionLikeId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ]
+    }
+}
+@enduml

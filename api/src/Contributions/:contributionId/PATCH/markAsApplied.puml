@@ -1,0 +1,19 @@
+@startuml markAsApplied-Request
+!theme toy
+title "markAsApplied /api/contributions/:contributionId PATCH Request"
+
+' Jwt of the creator of the post
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+
+json Data {
+    "applied": ""
+}
+@enduml
+@startuml markAsApplied-Response
+!theme toy
+title "markAsApplied /api/contributions/:contributionId PATCH Response"
+@enduml

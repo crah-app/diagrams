@@ -1,0 +1,37 @@
+@startuml addNewTrick-Request
+!theme toy
+title "addNewTrick /api/tricks POST Request"
+
+json Data {
+    "name": "",
+    "spots": [
+        {
+            "spot": "",
+            "date": ""
+        }
+    ],
+    ' `confirmation` should be true when the user wants to actually post the trick,
+    ' while when creating the trick, a request with `confirmation` = false 
+    ' tells the server to calculate the points of the trick, keep them stored in a 
+    ' temporary table, and send them to the frontend for preview.
+    '
+    ' This way we avoid:
+    ' - sending the points from the client, so we are sure they are genuine
+    ' - calculating the points twice for preview and creation
+    "confirmation": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml addNewTrick-Response
+!theme toy
+title "addNewTrick /api/tricks POST Response"
+
+json Data  {
+    "points": ""
+}
+@enduml

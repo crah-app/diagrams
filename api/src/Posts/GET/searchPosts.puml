@@ -1,0 +1,73 @@
+@startuml searchPosts-Request
+!theme toy
+title "searchPosts /api/posts GET Request"
+
+json Data {
+    "filter": {
+        "friendsOnly": "",
+        "followeesOnly": "",
+        "type": "",
+        "tags": []
+    },
+    "orderBy": "",
+    "search": "",
+    "limit": "",
+    "offset": ""
+}
+
+'Optional (only if friendsOnly=true)
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml searchPosts-Response
+!theme toy
+title "searchPosts /api/posts GET Response"
+
+package "posts.zip" {
+    folder "users" {
+        json "users.json" {
+            "users": [
+                {
+                    "userId": "",
+                    "username": ""
+                }
+            ]
+        }
+
+        folder "pfps" {
+            file "userId-pfp.png"
+        }
+    }
+
+    folder "posts" {
+        json "posts.json" {
+            "posts": [
+                {
+                "postId": "",
+                "userId": "",
+                "title": "",
+                "type": "",
+                "description": "",
+                "timestamp": "",
+                ' Optional (only for Music and Video)
+                "duration": "",
+                "likes": "",
+                "comments": "",
+                "views": "",
+                ' Optional (only for articles)
+                "contributions": ""
+                }
+            ]
+        }
+
+        folder "covers" {
+            file "postId-cover.png"
+            ' Photo posts use the first image in the sequence as cover
+            file "postId-image-0.png"
+        }
+    }
+}
+@enduml

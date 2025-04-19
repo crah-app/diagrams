@@ -1,0 +1,14 @@
+@startuml removeDislikeFromContributionComment-Request
+!theme toy
+title "removeDislikeFromContributionComment /api/contributionCommentDislikes/:contributionCommentDislikeId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeDislikeFromContributionComment-Response
+!theme toy
+title "removeDislikeFromContributionComment /api/contributionCommentDislikes/:contributionCommentDislikeId DELETE Response"
+@enduml

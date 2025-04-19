@@ -1,0 +1,14 @@
+@startuml withdrawContributionBeforeApplication-Request
+!theme toy
+title "withdrawContributionBeforeApplication /api/contributions/:contributionId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml withdrawContributionBeforeApplication-Response
+!theme toy
+title "withdrawContributionBeforeApplication /api/contributions/:contributionId DELETE Response"
+@enduml

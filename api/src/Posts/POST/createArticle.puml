@@ -1,0 +1,46 @@
+@startuml createArticle-Request
+!theme toy
+title "createArticle /api/posts POST Request"
+
+package "post.zip" {
+    ' Optional
+    ' If no cover is given, a default image will be displayed
+    file "post-cover.png"
+    file "post.md"
+
+    ' Optional
+    ' Images available to the article, marked in `post.md` only using their ids.
+    file "post-image-0.png"
+    ' Optional
+    file "post-image-1.jpg"
+
+    json "post.json" {
+        "title": "",
+        "type": "",
+        "description": "",
+        ' People who worked on the article
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ],
+        "tags": []
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml createArticle-Response
+!theme toy
+title "createArticle /api/posts POST Response"
+
+json Data {
+    "postId": ""
+}
+@enduml

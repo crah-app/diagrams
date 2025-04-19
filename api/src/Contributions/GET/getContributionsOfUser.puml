@@ -1,0 +1,53 @@
+@startuml getContributionsOfUser-Request
+!theme toy
+title "getContributionsOfUser /api/contributions GET Request"
+
+json Data {
+    "userId": "",
+    "offset": "",
+    "limit": ""
+}
+@enduml
+@startuml getContributionsOfUser-Response
+!theme toy
+title "getContributionsOfUser /api/contributions GET Response"
+
+package "contributions.zip" {
+    folder "pfps" {
+        file "userId-pfp.png"    
+    }
+
+    json "contributions.json" {
+        "contributions": [
+            {
+                "contributionId": "",
+                "post": {
+                    "postId": "",
+                    "title": ""
+                    ' Cover or not ?
+                },
+                "title": "",
+                "text": "",
+                "timestamp": "",
+                "applied": "",
+                "tags": [],
+                "likes": "",
+                "dislikes": "",
+                "comments": [
+                    {
+                        "commentId": "",
+                        "text": "",
+                        "timestamp": "",
+                        "user": {
+                            "userId": "",
+                            "username": ""
+                        },
+                        "likes": "",
+                        "dislikes": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
+@enduml

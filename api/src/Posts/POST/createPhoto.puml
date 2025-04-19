@@ -1,0 +1,49 @@
+@startuml createPhoto-Request
+!theme toy
+title "createPhoto /api/posts POST Request"
+
+package "post.zip" {
+    
+    ' Atleast one image has to be sent.
+    ' The postfix number is an identifier, we get a counter
+    ' when a user gets his own article in case he wants to add
+    ' any image
+    file "postId-image-0.png"
+    ' Optional
+    file "postId-image-1.jpg"
+
+    json "post.json" {
+        "title": "",
+        "type": "",
+        "description": "",
+        ' People who are present in the photo
+        "partecipants": [
+            {
+                ' Optional (rare usecases in photos)
+                "role": "",
+                "userId": ""
+            }
+        ],
+        "tags": [],
+
+        ' No cover for photos, the first image in the sequence will be shown
+        ' The ids of the images in the displayed sequence
+        ' e.g "0, 1"
+        "imageIdsSequence": ""
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml createPhoto-Response
+!theme toy
+title "createPhoto /api/posts POST Response"
+
+json Data {
+    "postId": ""
+}
+@enduml

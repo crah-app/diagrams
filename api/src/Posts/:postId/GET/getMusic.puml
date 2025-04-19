@@ -1,0 +1,88 @@
+@startuml getMusic-Request
+!theme toy
+title "getMusic /api/posts/:postId GET Request"
+@enduml
+@startuml getMusic-Response
+!theme toy
+title "getMusic /api/posts/:postId GET Response"
+
+package "post.zip" {
+
+    ' Diff
+    folder "users" {
+        folder "pfps" {
+            file "userId-pfp.png"
+        }
+
+        json "users.json" {
+            "users": [
+                {
+                    "userId": "",
+                    "username": ""
+                }
+            ]
+        }
+    }
+
+    ' Diff (for `getNotifications`)
+    file "postId-cover.png"
+
+    json "post.json" {
+        "postId": "",
+        "userId": "",
+        "title": "",
+        "type": "",
+        "timestamp": "",
+        ' Diff (for `getNotifications`)
+        "description": "",
+        ' Diff (for `getNotifications`)
+        "likes": "",
+        ' Diff (for `getNotifications`)
+        "comments": "",
+        ' Diff (for `getNotifications`)
+        "views": "",
+        "duration": "",
+        ' Diff
+        "partecipants": [
+            {
+                "role": "",
+                "userId": ""
+            }
+        ],
+        ' Diff (for `getNotifications`)
+        "tags": [],
+        ' Optional (if auth is provided & the user has liked)
+        "userLikeId": "",
+        ' Optional (if auth is provided & the user has reacted)
+        "userReaction": {
+            ' Necessary to know wich emoji to highlight
+            "emojiId": "",
+            ' Necessary if the user decides to remove it.
+            "reactionId": ""
+        },
+        ' Grouped reactions
+        "reactions": [
+            {
+                "emojiId": "",
+                "counter": ""
+            }
+        ]
+    }
+
+    ' Diff
+    ' First chunk of comments
+    json "comments.json" {
+        "comments": [
+            {
+                "commentId": "",
+                "userId": "",
+                "timestamp": "",
+                "text": "",
+                "likes": ""
+            }
+        ],
+        "limit": "",
+        "offset": ""
+    }
+}
+@enduml

@@ -1,0 +1,23 @@
+@startuml updateContribution-Request
+!theme toy
+title "updateContribution /api/contributions/:contributionId PATCH Request"
+
+json Data {
+    ' Optional
+    "title": "",
+    ' Optional
+    "text": "",
+    ' Optional
+    "tags": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml updateContribution-Response
+!theme toy
+title "updateContribution /api/contributions/:contributionId PATCH Response"
+@enduml

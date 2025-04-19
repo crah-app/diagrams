@@ -1,0 +1,296 @@
+@startwbs api
+!theme toy
+* Api
+
+** Tricks
+*** Endpoint /api/tricks
+**** GET
+' By Chunks
+' With Search
+' With Filter
+***** getTrickList
+' By Chunks
+***** searchUsersWhoLandedTrick 
+**** POST
+' Auth Required
+***** addNewTrick
+**** Endpoint /api/tricks/:trickId
+***** PATCH
+' Auth Required
+****** updateTrick
+***** DELETE
+' Auth Required
+****** removeTrickFromTrickList
+
+** Posts
+*** Endpoint /api/posts
+**** GET
+' By Chunks
+' With Search
+' With Filter + Sorting
+' Auth Optional(filter's friendsOnly option)
+***** searchPosts
+' By Chunks
+' With Search
+' With Filter + Sorting
+***** getPostsOfUser
+**** POST
+' Auth Required
+***** createArticle
+' Auth Required
+***** createMusic
+' Auth Required
+***** createVideo
+' Auth Required
+***** createPhoto
+**** Endpoint /api/posts/:postId
+' For uploading a video to a video that hasn't been fully commited yet
+
+***** GET
+' Load only what's missing
+****** getArticle
+****** getVideo
+****** getMusic
+****** getPhoto
+***** PATCH
+' Auth Required
+****** updatePhoto
+' Auth Required
+****** updateVideo
+' Auth Required
+****** updateMusic
+' Auth Required
+****** updateArticle
+***** DELETE
+' Auth Required
+****** deletePost
+***** Endpoint /api/posts/:postId/stream
+****** GET
+******* streamVideo
+******* streamMusic
+****** POST
+******* streamVideo
+******* streamMusic
+****** PATCH
+******* streamVideo
+******* streamMusic
+****** DELETE
+******* abortUpload
+'** Users
+'*** Endpoint /api/users
+'**** GET
+'**** POST
+'**** Endpoint /api/users/:userId
+'***** GET
+'***** PUT
+'***** DELETE
+
+** Comments
+*** Endpoint /api/comments
+**** GET
+' By Chunks
+' With Sorting
+***** getCommentsOfPost
+' By Chunks
+' With Sorting
+***** getCommentsOfUser
+**** POST
+' Auth Required
+***** addCommentToPost
+**** Endpoint /api/comments/:commentId
+***** PUT
+' Auth Required
+****** editComment
+***** DELETE
+' Auth Required
+****** deleteComment
+
+** CommentLikes
+*** Endpoint /api/commentLikes
+**** GET
+' By Chunks
+***** getLikesOfComment
+**** POST
+' Auth Required
+***** likeAComment
+**** Endpoint /api/commentLikes/:commentLikeId
+***** DELETE
+' Auth Required
+****** removeLikeFromComment
+
+** Likes
+*** Endpoint /api/likes
+**** GET
+' By Chunks
+***** getLikesOfPost
+' By Chunks
+***** getLikesOfUser
+**** POST
+' Auth Required
+***** likeAPost
+**** Endpoint /api/likes/:likeId
+***** DELETE
+' Auth Required
+****** removeLikeFromPost
+
+** Reactions
+*** Endpoint /api/reactions
+**** GET
+' By Chunks
+***** getReactionsOfPost
+**** POST
+' Auth Required
+***** addReactionToPost
+**** Endpoint /api/reactions/:reactionId
+***** DELETE
+' Auth Required
+****** removeReaction
+
+** Contributions
+*** Endpoint /api/contributions
+**** GET
+' By Chunks
+' With Search
+' With Filter
+***** getContributionsOfArticle
+' By Chunks
+' With Search
+' With Filter
+***** getContributionsOfUser
+**** POST
+' Auth Required
+***** addContributionToArticle
+**** Endpoint /api/contributions/:contributionId
+***** GET
+' Load only what's missing
+****** getContribution
+***** PATCH
+' Auth Required
+****** updateContribution
+' Auth Required
+****** markAsApplied
+***** DELETE
+' Auth Required
+****** withdrawContributionBeforeApplication
+
+** ContributionLikes
+*** Endpoint /api/contributionLikes
+**** GET
+' By Chunks
+***** getLikesOfContribution
+**** POST
+' Auth Required
+***** likeAContribution
+**** Endpoint /api/contributionLikes/:contributionLikeId
+***** DELETE
+' Auth Required
+****** removeLikeFromContribution
+
+** ContributionDislikes
+*** Endpoint /api/contributionDislikes
+**** GET
+' By Chunks
+***** getDislikesOfContribution
+**** POST
+' Auth Required
+***** dislikeAContribution
+**** Endpoint /api/contributionDislikes/:contributionDislikeId
+***** DELETE
+' Auth Required
+****** removeDislikeFromContribution
+
+** ContributionComments
+*** Endpoint /api/contributionComments
+**** POST
+' Auth Required
+***** addCommentToContribution
+**** Endpoint /api/contributionComments/:contributionCommentId
+***** PUT
+' Auth Required
+****** editContributionComment
+***** DELETE
+' Auth Required
+****** deleteContributionComment
+
+** ContributionCommentLikes
+*** Endpoint /api/contributionCommentLikes
+**** GET
+' By Chunks
+***** getLikesOfContributionComment
+**** POST
+' Auth Required
+***** likeAContributionComment
+**** Endpoint /api/contributionCommentLikes/:contributionCommentLikeId
+***** DELETE
+' Auth Required
+****** removeLikeFromContributionComment
+
+** ContributionCommentDislikes
+*** Endpoint /api/contributionCommentDislikes
+**** GET
+' By Chunks
+***** getDislikesOfContributionComment
+**** POST
+' Auth Required
+***** dislikeAContributionComment
+**** Endpoint /api/contributionCommentDislikes/:contributionCommentDislikeId
+***** DELETE
+' Auth Required
+****** removeDislikeFromContributionComment
+
+** Follows
+*** Endpoint /api/follows
+**** POST
+' Auth Required
+***** followUser
+**** Endpoint /api/follows/:followId
+***** DELETE
+' Auth Required
+****** stopFollowingUser
+' Auth Required
+****** stopUserFromFollowingYou
+**** Endpoint /api/follows/followees
+***** GET
+' By Chunks
+****** getFolloweesOfUser
+**** Endpoint /api/follows/followers
+***** GET
+' By Chunks
+****** getFollowersOfUser
+
+** Friends
+*** Endpoint /api/friends
+**** GET
+' Auth Required
+***** getFriendsOfUser
+**** Endpoint /api/friends/:friendId
+***** DELETE
+' Auth Required
+****** removeUserFromFriends
+
+** FriendshipRequests
+*** Endpoint /api/friendshipRequests
+**** POST
+' Auth Required
+***** sendFriendshipRequestToUser
+**** Endpoint /api/friendshipRequests/:friendshipRequestId
+***** DELETE
+' Auth Required
+****** refuseFriendshipRequest
+' Auth Required
+****** withdrawFriendshipRequest
+**** Endpoint /api/friendshipRequests/to
+***** GET
+' Auth Required
+****** getFriendshipRequestsToUser
+**** Endpoint /api/friendshipRequests/from
+***** GET
+' Auth Required
+****** getFriendshipRequestsFromUser
+
+** Notifications
+*** Endpoint /api/notifications
+**** GET
+' Auth Required
+***** getNotifications
+@endwbs

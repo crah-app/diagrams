@@ -1,0 +1,41 @@
+@startuml createVideo-Request
+!theme toy
+title "createVideo /api/posts POST Request"
+
+package "post.zip" {
+
+    ' Either uploaded or picked from a frame of the video
+    ' By default, if not uploaded or picked, the first frame
+    ' of the video is sent
+    file "post-cover.png"
+
+    json "post.json" {
+        "title": "",
+        "type": "",
+        "description": "",
+        ' People who worked on the video or appeared in it
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ],
+        "tags": []
+    }
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml createVideo-Response
+!theme toy
+title "createVideo /api/posts POST Response"
+
+json Data {
+    "postId": ""
+}
+@enduml

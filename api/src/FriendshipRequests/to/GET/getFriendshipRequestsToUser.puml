@@ -1,0 +1,34 @@
+@startuml getFriendshipRequestsToUser-Request
+!theme toy
+title "getFriendshipRequestsToUser /api/friendshipRequests/to GET Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml getFriendshipRequestsToUser-Response
+!theme toy
+title "getFriendshipRequestsToUser /api/friendshipRequests/to GET Response"
+
+package "friendshipRequests.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "friendshipRequests.json" {
+        "friendshipRequests": [
+            {
+                "friendshipRequestId": "",
+                "toUser": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ]
+    }
+}
+@enduml

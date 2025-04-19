@@ -1,0 +1,12 @@
+@startuml stopUserFromFollowingYou-Request
+title "stopUserFromFollowingYou /api/follows/:followId DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml stopUserFromFollowingYou-Response
+title "stopUserFromFollowingYou /api/follows/:followId DELETE Response"
+@enduml

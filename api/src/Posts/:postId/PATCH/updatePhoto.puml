@@ -1,0 +1,49 @@
+@startuml updatePhoto-Request
+!theme toy
+title "updatePhoto /api/posts/:postId PATCH Request"
+package "postUpdate.zip" {
+
+    ' Optional (new image)
+    file "post-image-4.png"
+    ' Optional (new image)
+    file "post-image-5.jpg"
+
+    json "postUpdate.json" {
+        ' Optional
+        ' All ids not present in the sequence are going to be 
+        ' deleted from the servers
+        ' e.g if post has images `456-image-0.png`, `456-image-2.jpg`, `456-image-3.png`
+        ' and imageIdsSequence = "2, 3" then, `456-image-0.png` is going to be deleted.
+        "imageIdsSequence": "",
+        ' Optional
+        "title": "",
+        ' Optional
+        "description": "",
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "tags": [],
+        ' Optional
+        ' If omitted, no changes are made.
+        ' If present, adds the new ones and removes all the missing ones
+        "partecipants": [
+            {
+                ' Optional
+                "role": "",
+                "userId": ""
+            }
+        ]
+    }
+}
+
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml updatePhoto-Response
+!theme toy
+title "updatePhoto /api/posts/:postId PATCH Response"
+@enduml

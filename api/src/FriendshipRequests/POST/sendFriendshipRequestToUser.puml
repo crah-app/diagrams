@@ -1,0 +1,22 @@
+@startuml sendFriendshipRequestToUser-Request
+!theme toy
+title "sendFriendshipRequestToUser /api/friendshipRequests POST Request"
+
+json Data {
+    "toUserId": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml sendFriendshipRequestToUser-Response
+!theme toy
+title "sendFriendshipRequestToUser /api/friendshipRequests POST Response"
+json Data {
+    "timestamp": "",
+    "friendshipRequestId": ""
+}
+@enduml

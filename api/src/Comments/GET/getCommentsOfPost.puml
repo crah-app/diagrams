@@ -1,0 +1,35 @@
+@startuml getCommentsOfPost-Request
+!theme toy
+title "getCommentsOfPost /api/comments GET Request"
+
+json Data {
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getCommentsOfPost-Response
+!theme toy
+title "getCommentsOfPost /api/comments GET Response"
+
+package "comments.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "comments.json" {
+        "comments": [
+            {
+                "commentId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "text": "",
+                "timestamp": "",
+                "likes": ""
+            }
+        ]
+    }
+}
+@enduml

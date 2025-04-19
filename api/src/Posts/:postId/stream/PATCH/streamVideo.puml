@@ -1,0 +1,16 @@
+@startuml streamVideo-Request
+!theme toy
+title "streamVideo /api/posts/:postId/stream PATCH Request"
+
+file "postId.mp4"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml streamVideo-Response
+!theme toy
+title "streamVideo /api/posts/:postId/stream PATCH Response"
+@enduml

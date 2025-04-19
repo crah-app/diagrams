@@ -1,0 +1,30 @@
+@startuml getLikesOfComment-Request
+!theme toy
+title "getLikesOfComment /api/commentLikes GET Request"
+
+json Data {
+    "commentId": ""
+}
+@enduml
+@startuml getLikesOfComment-Response
+!theme toy
+title "getLikesOfComment /api/commentLikes GET Response"
+
+package "commentLikes.zip" {
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "commentLikes.json" {
+        "commentLikes": [
+            {
+                "commentLikeId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ]
+    }
+}
+@enduml

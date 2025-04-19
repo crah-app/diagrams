@@ -1,0 +1,34 @@
+@startuml getFollowersOfUser-Request
+!theme toy
+title "getFollowersOfUser /api/follows/followers GET Request"
+
+json Data {
+    "userId": "",
+    "limit": "",
+    "offset": ""
+}
+@enduml
+@startuml getFollowersOfUser-Response
+!theme toy
+title "getFollowersOfUser /api/follows/followers GET Response"
+
+package "followers.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+    
+    json "followers.json" {
+        "followers": [
+            {
+                "followId": "",
+                "follower": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ]
+        
+    }
+}
+@enduml

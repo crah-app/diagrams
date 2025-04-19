@@ -1,0 +1,27 @@
+@startuml getDislikesOfContribution-Request
+!theme toy
+title "getDislikesOfContribution /api/contributionDislikes GET Request"
+@enduml
+@startuml getDislikesOfContribution-Response
+!theme toy
+title "getDislikesOfContribution /api/contributionDislikes GET Response"
+
+package "contributionDislikes.zip" {
+
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    json "contributionDislikes.json" {
+        "contributionDislikes": [
+            {
+                "contributionDislikeId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ]
+    }
+}
+@enduml
