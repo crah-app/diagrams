@@ -1,5 +1,6 @@
 @startuml addReactionToPost-Request
 !theme toy
+skinparam linetype ortho
 title "addReactionToPost /api/reactions POST Request"
 
 json Data {
@@ -12,6 +13,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml addReactionToPost-Response
 !theme toy

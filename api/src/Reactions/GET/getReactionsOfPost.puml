@@ -1,5 +1,6 @@
 @startuml getReactionsOfPost-Request
 !theme toy
+skinparam linetype ortho
 title "getReactionsOfPost /api/reactions GET Request"
 
 json Data {
@@ -10,6 +11,7 @@ json Data {
 @enduml
 @startuml getReactionsOfPost-Response
 !theme toy
+skinparam linetype ortho
 title "getReactionsOfPost /api/reactions GET Response"
 
 package "reactions.zip" {
@@ -22,6 +24,8 @@ package "reactions.zip" {
             "userId": "",
             "username": ""
         }
+
+        "users.json" -o "pfps"
     }
 
     json "reactions.json" {
@@ -34,5 +38,7 @@ package "reactions.zip" {
             }
         ]
     }
+
+    "reactions.json" --o "users.json"
 }
 @enduml
