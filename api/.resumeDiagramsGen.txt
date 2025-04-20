@@ -1,0 +1,1 @@
+src/Likes/:likeId/DELETE/removeLikeFromPost.puml

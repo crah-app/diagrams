@@ -15,17 +15,9 @@ skinparam linetype ortho
 title "getReactionsOfPost /api/reactions GET Response"
 
 package "reactions.zip" {
-    folder "users" {
-        folder "pfps" {
-            file "userId-pfp.png"
-        }
 
-        json "users.json" {
-            "userId": "",
-            "username": ""
-        }
-
-        "users.json" -o "pfps"
+    folder "pfps" {
+        file "userId-pfp.png"
     }
 
     json "reactions.json" {
@@ -33,12 +25,15 @@ package "reactions.zip" {
             {
                 "reactionId": "",
                 "postId": "",
-                "userId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
                 "emojiId": ""
             }
         ]
     }
 
-    "reactions.json" --o "users.json"
+    "reactions.json" --o "pfps"
 }
 @enduml

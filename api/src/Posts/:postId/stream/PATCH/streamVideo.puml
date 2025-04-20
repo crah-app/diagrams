@@ -1,14 +1,21 @@
 @startuml streamVideo-Request
 !theme toy
+skinparam linetype ortho
 title "streamVideo /api/posts/:postId/stream PATCH Request"
 
 file "postId.mp4"
+
+note left of "postId.mp4"
+    Stream of bytes
+end note
 
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+
+"postId.mp4" --* Auth
 @enduml
 @startuml streamVideo-Response
 !theme toy

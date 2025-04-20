@@ -1,10 +1,17 @@
 @startuml updatePhoto-Request
 !theme toy
+skinparam linetype ortho
 title "updatePhoto /api/posts/:postId PATCH Request"
+
 package "postUpdate.zip" {
 
     ' Optional (new image)
     file "post-image-4.png"
+
+    note left of "post-image-4.png" 
+        Optional: new image
+    end note
+
     ' Optional (new image)
     file "post-image-5.jpg"
 
@@ -34,6 +41,28 @@ package "postUpdate.zip" {
             }
         ]
     }
+
+    note bottom of "postUpdate.json"
+        Optional fields: **imageIdsSequence**, **title**, **description**, **tags**, **partecipants**
+    end note
+
+    note right of "postUpdate.json" 
+        Certain optional fields should contain full information if present.
+        e.g if the **tags** field exist, the new tags will be added,
+        and the missing ones will be removed.
+    end note
+
+    note top of "postUpdate.json" 
+        All ids not present in **imageIdsSequence** are going to be 
+        deleted from the servers.
+        e.g if post has images `456-image-0.png`, `456-image-2.jpg`, `456-image-3.png`
+        and **imageIdsSequence** = "2, 3" then, `456-image-0.png` is going to be deleted.
+
+        For every new image, the **imageIdsCounter** is updated on the server.
+    end note
+
+    "postUpdate.json" --o "post-image-4.png"
+    "postUpdate.json" --o "post-image-5.jpg"
 }
 
 
@@ -42,8 +71,12 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"postUpdate.zip" --* Auth
 @enduml
 @startuml updatePhoto-Response
 !theme toy
+skinparam linetype ortho
+
 title "updatePhoto /api/posts/:postId PATCH Response"
 @enduml

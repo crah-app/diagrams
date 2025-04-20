@@ -1,14 +1,16 @@
 @startuml updateMusic-Request
 !theme toy
+skinparam linetype ortho
 title "updateMusic /api/posts/:postId PATCH Request"
 
 package "postUpdate.zip" {
     ' Optional (cover replacement)
     file "postId-cover.png"
-
-    ' Optional (audio replacement)
-    file "postId.mp3"
-
+    
+    note left of "postId-cover.png" 
+        Optional
+    end note
+    
     json "postUpdate.json" {
         ' Optional
         "title": "",
@@ -29,6 +31,16 @@ package "postUpdate.zip" {
             }
         ]
     }
+
+    note bottom of "postUpdate.json" 
+        Optional fields: **title**, **description**, **tags**, **partecipants**
+    end note
+    
+    note right of "postUpdate.json" 
+        Certain optional fields should contain full information if present.
+        e.g if the **tags** field exist, the new tags will be added,
+        and the missing ones will be removed.
+    end note
 }
 
 json Auth {
@@ -36,8 +48,11 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"postUpdate.zip" --* Auth
 @enduml
 @startuml updateMusic-Response
 !theme toy
+skinparam linetype ortho
 title "updateMusic /api/posts/:postId PATCH Response"
 @enduml

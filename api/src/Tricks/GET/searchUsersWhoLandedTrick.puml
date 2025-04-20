@@ -29,28 +29,19 @@ skinparam linetype ortho
 title "searchUsersWhoLandedTrick /api/tricks GET Response"
 
 package "users.zip" {
-    folder "users" {
-        json "users.json" {
-            "users": [
-                {
-                    "userId": "",
-                    "username": ""
-                }
-            ]
-        }
 
-        folder "pfps" {
-            file "userId-pfp.png"
-        }
-
-        "users.json" -o "userId-pfp.png"
+    folder "pfps" {
+        file "userId-pfp.png"
     }
-    
+
     json "tricks.json" {
         "tricks": [
             {
                 "trickId": "",
-                "userId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
                 ' Name is already known to the client.
                 "points": "",
                 "spots": [
@@ -63,7 +54,8 @@ package "users.zip" {
         ]
     }
 
-    "tricks.json" --o "users.json"
+    "tricks.json" --o "pfps"
+    
     note right of "tricks.json"
         The name of the trick is
         already known to the client

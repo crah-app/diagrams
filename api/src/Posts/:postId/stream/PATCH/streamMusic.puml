@@ -1,16 +1,24 @@
 @startuml streamMusic-Request
 !theme toy
+skinparam linetype ortho
 title "streamMusic /api/posts/:postId/stream PATCH Request"
 
 file "postId.mp3"
+
+note left of "postId.mp3"
+    Stream of bytes
+end note
 
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+
+"postId.mp3" --* Auth
 @enduml
 @startuml streamMusic-Response
 !theme toy
+skinparam linetype ortho
 title "streamMusic /api/posts/:postId/stream PATCH Response"
 @enduml

@@ -1,7 +1,7 @@
 @startuml getArticle-Request
 !theme toy
+skinparam linetype ortho
 title "getArticle /api/posts/:postId GET Request"
-
 
 json Data {
     ' Optional
@@ -15,32 +15,39 @@ json Data {
     "previousView": ""
 } 
 
+note top of Data 
+    Optional fields: **previousView**
+end note
+
+note bottom of Data 
+    if missing **previousView**, the full data is retrieved,
+    e.g when accessing the post from a direct link.
+    Otherwise we assume that the client already owns partial data
+    about the post, as most part of the metadata, the cover ecc.
+
+    **previousView** should be set to the latest usecase, like
+    searchPosts or getNotifications or getPostsOfUser
+    and the server will respond appropriately.
+end note
+
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+
+Data --o Auth
 @enduml
 @startuml getArticle-Response
 !theme toy
+skinparam linetype ortho
 title "getArticle /api/posts/:postId GET Response"
 
 package "post.zip" {
 
     ' Diff
-    folder "users" {
-        folder "pfps" {
-            file "userId-pfp.png"
-        }
-
-        json "users.json" {
-            "users": [
-                {
-                    "userId": "",
-                    "username": ""
-                }
-            ]
-        }
+    folder "pfps" {
+        file "userId-pfp.png"
     }
 
     ' Diff (for `getNotifications`)
@@ -52,7 +59,10 @@ package "post.zip" {
 
     json "post.json" {
         "postId": "",
-        "userId": "",
+        "user": {
+            "userId": "",
+            "username": ""
+        },
         "title": "",
         "type": "",
         "timestamp": "",
@@ -68,7 +78,10 @@ package "post.zip" {
         "partecipants": [
             {
                 "role": "",
-                "userId": ""
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
             }
         ],
         ' Diff (for `getNotifications`)
@@ -96,13 +109,37 @@ package "post.zip" {
         ]
     }
 
+    note bottom of "post.json"
+        Optional fields: **imageIdsCounter**, **userLikeId**, **userReaction**
+    end note
+
+    note left of "post.json"
+        **reactions** are grouped, no informations about the users
+    end note
+
+    note top of "post.json"
+        **imageIdsSequence** is a string with the ids of the images
+        in the correct order
+
+        **imageIdsCounter** is necessary if the user wants
+        to edit the post (the client can name the new images correctly).
+
+        **userLikeId** if the user has liked, so he can
+        remove the like if he wants.
+    end note
+
+    "post.json" --o "pfps"
+
     ' Diff
     ' First chunk of comments
     json "comments.json" {
         "comments": [
             {
                 "commentId": "",
-                "userId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
                 "timestamp": "",
                 "text": "",
                 "likes": ""
@@ -111,5 +148,12 @@ package "post.zip" {
         "limit": "",
         "offset": ""
     }
+
+    note top of "comments.json"
+        First chunk of comments
+    end note
+
+    "comments.json" --o "pfps"
+    
 }
 @enduml

@@ -1,13 +1,15 @@
 @startuml updateVideo-Request
 !theme toy
+skinparam linetype ortho
 title "updateVideo /api/posts/:postId PATCH Request"
 
 package "postUpdate.zip" {
     ' Optional (cover replacement)
     file "postId-cover.png"
 
-    ' Optional (video replacement)
-    file "postId.mp4"
+    note left of "postId-cover.png" 
+        Optional
+    end note
 
     json "postUpdate.json" {
         ' Optional
@@ -29,6 +31,16 @@ package "postUpdate.zip" {
             }
         ]
     }
+
+    note bottom of "postUpdate.json" 
+        Optional fields: **title**, **description**, **tags**, **partecipants**
+    end note
+    
+    note right of "postUpdate.json" 
+        Certain optional fields should contain full information if present.
+        e.g if the **tags** field exist, the new tags will be added,
+        and the missing ones will be removed.
+    end note
 }
 
 json Auth {
@@ -36,6 +48,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"postUpdate.zip" --* Auth
 @enduml
 @startuml updateVideo-Response
 !theme toy

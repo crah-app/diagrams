@@ -1,19 +1,33 @@
 @startuml updateArticle-Request
 !theme toy
+skinparam linetype ortho
 title "updateArticle /api/posts/:postId PATCH Request"
 
 package "postUpdate.zip" {
     
     ' Optional (cover replacement)
     file "postId-cover.png"
+    
+    note left of "postId-cover.png" 
+        Optional
+    end note
+
     ' Optional (any update in the article)
     file "postId.md"
+    
+    note left of "postId.md" 
+        Optional: for any change in the article
+    end note
 
     ' Optional (new image)
     file "post-image-4.png"
     ' Optional (new image)
     file "post-image-5.jpg"
-
+    
+    note left of "post-image-4.png" 
+        Optional: new image
+    end note
+    
     json "postUpdate.json" {
         ' Optional
         "title": "",
@@ -34,6 +48,23 @@ package "postUpdate.zip" {
             }
         ]
     }
+
+    note bottom of "postUpdate.json" 
+        Optional fields: **title**, **description**, **tags**, **partecipants**
+    end note
+    
+    note right of "postUpdate.json" 
+        Certain optional fields should contain full information if present.
+        e.g if the **tags** field exist, the new tags will be added,
+        and the missing ones will be removed.
+    end note
+
+    note top of "postUpdate.json" 
+        For every new image, the **imageIdsCounter** is updated on the server.
+        
+        TODO: **imageIdsSequence** is missing in the request because images are linked in the
+        markdown file? How about deleting the missing ones like we do in updatePhoto?
+    end note
 }
 
 json Auth {
@@ -41,8 +72,11 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"postUpdate.zip" --* Auth
 @enduml
 @startuml updateArticle-Response
 !theme toy
+skinparam linetype ortho
 title "updateArticle /api/posts/:postId PATCH Response"
 @enduml
