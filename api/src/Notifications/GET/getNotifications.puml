@@ -39,43 +39,181 @@ json Auth {
 title "getNotifications /api/notifications GET Response"
 
 package "notifications.zip" {
-    folder "users" {
-        folder "pfps" {
-            file "userId-pfp.png"
-        }
-
-        json "users.json" {
-            "users": [
-                {
-                    "userId": "",
-                    "username": ""
-                }
-            ]
-        }
+    folder "pfps" {
+        file "userId-pfp.png"
     }
 
     json "notifications.json" {
-        "friendshipRequests": [],
+        "friendshipRequests": [
+            {
+               "friendshipRequestId": "",
+               "fromUser": {
+                    "userId": "",
+                    "username": ""
+               },
+               "timestamp": ""
+            }
+        ],
         "messages": [],
-        "follows": [],
-        "likes": [],
-        "reactions": [],
-        "comments": [],
-        "commentLikes": [],
-        "contributions": [],
-        "contributionLikes": [],
-        "contributionComments": [],
-        "contributionCommentLikes": [],
+        "follows": [
+            {
+                "followId": "",
+                "follower": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ],
+        "likes": [
+            {
+                "likeId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "post": {
+                    "postId": "",
+                    "title": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "reactions": [
+            {
+                "reactionId": "",
+                "post": {
+                    "postId": "",
+                    "title": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "comments": [
+            {
+                "commentId": "",
+                "post": {
+                    "postId": "",
+                    "title": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "commentLikes": [
+            {
+                "commentLikeId": "",
+                "comment": {
+                    "commentId": "",
+                    "text": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "contributions": [
+            {
+                "contributionId": "",
+                "post": {
+                    "postId": "",
+                    "title": ""
+                },
+                "title": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "contributionLikes": [
+            {
+                "contributionLikeId": "",
+                "contribution": {
+                    "contributionId": "",
+                    "title": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "contributionComments": [
+            {
+                "contributionCommentId": "",
+                "contribution": {
+                    "contributionId": "",
+                    "title": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
+        "contributionCommentLikes": [
+            {
+                "contributionCommentLikeId": "",
+                "contributionComment": {
+                    "contributionCommentId": "",
+                    "text": ""
+                },
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": ""
+            }
+        ],
         "posts": [
             {
                 "postId": "",
-                "userId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
                 "title": "",
                 "type": "",
                 "timestamp": "",
-                "duration": ""
+                "duration": "",
+                "timestamp": ""
             }
         ]
     }
+
+    "notifications.json" --o "pfps"
 }
+
+note left of "notifications.zip"
+    A scan for new notifications is done:
+    - everytime the user opens the app
+    - everytime going to the area where notifications are displayed
+
+    A check for all the tables is done to see if the timestamp of the row
+    is more recent than the timestamp of the last time notifications were checked.
+    Notifications are liquid, they never get stored in a table.
+end note
+
+note bottom of "notifications.zip"
+    A new notification leaves a red dot at the edge to mark it as a new notification
+    An old notification (already viewed by the user) is chached and cleared every certain amount of time.
+    There must be a setting for how long should old notifications live.
+    The user might want to clear a single old notification. He can do that by swiping on it (mobile)
+    Or clicking a clear button on desktop
+
+    In the settings the user should be able to 
+    deactivate notifications, or disable certain kinds of them.
+end note
 @enduml
