@@ -1,5 +1,6 @@
 @startuml getFollowersOfUser-Request
 !theme toy
+skinparam linetype ortho
 title "getFollowersOfUser /api/follows/followers GET Request"
 
 json Data {
@@ -7,9 +8,14 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
 @enduml
 @startuml getFollowersOfUser-Response
 !theme toy
+skinparam linetype ortho
 title "getFollowersOfUser /api/follows/followers GET Response"
 
 package "followers.zip" {
@@ -28,7 +34,8 @@ package "followers.zip" {
                 }
             }
         ]
-        
     }
+
+    "followers.json" --o "pfps"
 }
 @enduml

@@ -4,6 +4,7 @@ title "getDislikesOfContribution /api/contributionDislikes GET Request"
 @enduml
 @startuml getDislikesOfContribution-Response
 !theme toy
+skinparam linetype ortho
 title "getDislikesOfContribution /api/contributionDislikes GET Response"
 
 package "contributionDislikes.zip" {
@@ -23,5 +24,7 @@ package "contributionDislikes.zip" {
             }
         ]
     }
+
+    "contributionDislikes.json" --o "pfps"
 }
 @enduml

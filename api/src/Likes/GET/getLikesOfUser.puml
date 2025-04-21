@@ -1,5 +1,6 @@
 @startuml getLikesOfUser-Request
 !theme toy
+skinparam linetype ortho
 title "getLikesOfUser /api/likes GET Request"
 
 json Data {
@@ -7,6 +8,10 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
 @enduml
 @startuml getLikesOfUser-Response
 !theme toy
@@ -28,7 +33,10 @@ package "likes.zip" {
                 "likeId": "",
                 "post": {
                     "postId": "",
-                    "userId": "",
+                    "user": {
+                        "userId": "",
+                        "username": ""
+                    },
                     "title": "",
                     "type": "",
                     "duration": ""

@@ -1,5 +1,6 @@
 @startuml updateContribution-Request
 !theme toy
+skinparam linetype ortho
 title "updateContribution /api/contributions/:contributionId PATCH Request"
 
 json Data {
@@ -11,11 +12,17 @@ json Data {
     "tags": ""
 }
 
+note bottom of Data
+    Optional fields: **title**, **text**, **tags**
+end note
+
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml updateContribution-Response
 !theme toy

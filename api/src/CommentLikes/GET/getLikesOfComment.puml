@@ -8,6 +8,7 @@ json Data {
 @enduml
 @startuml getLikesOfComment-Response
 !theme toy
+skinparam linetype ortho
 title "getLikesOfComment /api/commentLikes GET Response"
 
 package "commentLikes.zip" {
@@ -26,5 +27,7 @@ package "commentLikes.zip" {
             }
         ]
     }
+
+    "commentLikes.json" --o "pfps"
 }
 @enduml

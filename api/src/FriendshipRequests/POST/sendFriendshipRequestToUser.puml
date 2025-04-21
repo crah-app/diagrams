@@ -1,5 +1,6 @@
 @startuml sendFriendshipRequestToUser-Request
 !theme toy
+skinparam linetype ortho
 title "sendFriendshipRequestToUser /api/friendshipRequests POST Request"
 
 json Data {
@@ -11,12 +12,14 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml sendFriendshipRequestToUser-Response
 !theme toy
 title "sendFriendshipRequestToUser /api/friendshipRequests POST Response"
 json Data {
-    "timestamp": "",
-    "friendshipRequestId": ""
+    "friendshipRequestId": "",
+    "timestamp": ""
 }
 @enduml

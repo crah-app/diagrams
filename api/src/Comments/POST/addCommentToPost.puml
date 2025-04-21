@@ -1,5 +1,6 @@
 @startuml addCommentToPost-Request
 !theme toy
+skinparam linetype ortho
 title "addCommentToPost /api/comments POST Request"
 
 json Data {
@@ -12,6 +13,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml addCommentToPost-Response
 !theme toy

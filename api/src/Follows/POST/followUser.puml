@@ -1,5 +1,6 @@
 @startuml followUser-Request
 !theme toy
+skinparam linetype ortho
 title "followUser /api/follows POST Request"
 
 json Data {
@@ -11,6 +12,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml followUser-Response
 !theme toy

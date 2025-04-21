@@ -1,5 +1,6 @@
 @startuml dislikeAContributionComment-Request
 !theme toy
+skinparam linetype ortho
 title "dislikeAContributionComment /api/contributionCommentDislikes POST Request"
 
 json Data {
@@ -11,6 +12,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml dislikeAContributionComment-Response
 !theme toy

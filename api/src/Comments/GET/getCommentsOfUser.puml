@@ -6,8 +6,13 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
 @enduml
 @startuml getCommentsOfUser-Response
+skinparam linetype ortho
 title "getCommentsOfUser /api/comments GET Response"
 
 package "comments.zip" {
@@ -39,5 +44,8 @@ package "comments.zip" {
             }
         ]
     }
+
+    "comments.json" --o "pfps"
+    "comments.json" --o "covers"
 }
 @enduml

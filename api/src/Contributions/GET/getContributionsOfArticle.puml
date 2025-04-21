@@ -1,5 +1,6 @@
 @startuml getContributionsOfArticle-Request
 !theme toy
+skinparam linetype ortho
 title "getContributionsOfArticle /api/contributions GET Request"
 
 json Data {
@@ -7,9 +8,14 @@ json Data {
     "offset": "",
     "limit": ""
 }
+
+note bottom of Data
+    By chunks: **offset**, **limit** required.
+end note 
 @enduml
 @startuml getContributionsOfArticle-Response
 !theme toy
+skinparam linetype ortho
 title "getContributionsOfArticle /api/contributions GET Response"
 
 package "contributions.zip" {
@@ -50,5 +56,12 @@ package "contributions.zip" {
             }
         ]
     }
+
+    note bottom of "contributions.json"
+        **applied** is a boolean value: if applied it means the modifications proposed have been already
+        applied to the post.
+    end note
+
+    "contributions.json" --o "pfps"
 }
 @enduml

@@ -1,5 +1,6 @@
 @startuml editComment-Request
 !theme toy
+skinparam linetype ortho
 title "editComment /api/comments/:commentId PUT Request"
 
 json Data {
@@ -11,6 +12,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml editComment-Response
 !theme toy

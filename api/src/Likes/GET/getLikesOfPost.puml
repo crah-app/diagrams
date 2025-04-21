@@ -1,12 +1,18 @@
 @startuml getLikesOfPost-Request
 !theme toy
+skinparam linetype ortho
 title "getLikesOfPost /api/likes GET Request"
+
 
 json Data {
     "postId": "",
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
 
 json Auth {
     "sub": "",
@@ -35,5 +41,6 @@ package "likes.zip" {
             }
         ]
     }
+    "likes.json" --o "pfps"
 }
 @enduml

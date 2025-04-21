@@ -1,5 +1,6 @@
 @startuml getFriendsOfUser-Request
 !theme toy
+skinparam linetype ortho
 title "getFriendsOfUser /api/friends GET Request"
 
 json Auth {
@@ -12,9 +13,14 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data
+    By chunks: **limit**, **offset** required.
+end note
 @enduml
 @startuml getFriendsOfUser-Response
 !theme toy
+skinparam linetype ortho
 title "getFriendsOfUser /api/friends GET Response"
 
 package "friends.zip" {
@@ -35,5 +41,7 @@ package "friends.zip" {
             }  
         ]
     }
+
+    "friends.json" --o "pfps"
 }
 @enduml

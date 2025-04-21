@@ -1,14 +1,20 @@
 @startuml getCommentsOfPost-Request
 !theme toy
+skinparam linetype ortho
 title "getCommentsOfPost /api/comments GET Request"
 
 json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
 @enduml
 @startuml getCommentsOfPost-Response
 !theme toy
+skinparam linetype ortho
 title "getCommentsOfPost /api/comments GET Response"
 
 package "comments.zip" {
@@ -31,5 +37,7 @@ package "comments.zip" {
             }
         ]
     }
+
+    "comments.json" --o "pfps"
 }
 @enduml

@@ -26,6 +26,7 @@
 ' Notifications in Crah are liquid, they never get stored in a table.
 @startuml getNotifications-Request
 !theme toy
+skinparam linetype ortho
 title "getNotifications /api/notifications GET Request"
 
 json Auth {
@@ -36,6 +37,7 @@ json Auth {
 @enduml
 @startuml getNotifications-Response
 !theme toy
+skinparam linetype ortho
 title "getNotifications /api/notifications GET Response"
 
 package "notifications.zip" {

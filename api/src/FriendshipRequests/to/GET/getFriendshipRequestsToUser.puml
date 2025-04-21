@@ -1,5 +1,6 @@
 @startuml getFriendshipRequestsToUser-Request
 !theme toy
+skinparam linetype ortho
 title "getFriendshipRequestsToUser /api/friendshipRequests/to GET Request"
 
 json Auth {
@@ -10,6 +11,7 @@ json Auth {
 @enduml
 @startuml getFriendshipRequestsToUser-Response
 !theme toy
+skinparam linetype ortho
 title "getFriendshipRequestsToUser /api/friendshipRequests/to GET Response"
 
 package "friendshipRequests.zip" {
@@ -30,5 +32,7 @@ package "friendshipRequests.zip" {
             }
         ]
     }
+
+    "friendshipRequests.json" --o "pfps"
 }
 @enduml

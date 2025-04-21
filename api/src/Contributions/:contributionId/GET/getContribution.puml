@@ -4,6 +4,7 @@ title "getContribution /api/contributions/:contributionId GET Request"
 @enduml
 @startuml getContribution-Response
 !theme toy
+skinparam linetype ortho
 title "getContribution /api/contributions/:contributionId GET Response"
 
 package "contribution.zip" {
@@ -45,5 +46,7 @@ package "contribution.zip" {
             ]
         }
     }
+
+    "contributions.json" --o "pfps"
 }
 @enduml

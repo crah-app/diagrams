@@ -1,5 +1,6 @@
 @startuml likeAPost-Request
 !theme toy
+skinparam linetype ortho
 title "likeAPost /api/likes POST Request"
 
 json Data {
@@ -11,9 +12,12 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml likeAPost-Response
 !theme toy
+skinparam linetype ortho
 title "likeAPost /api/likes POST Response"
 
 json Data {

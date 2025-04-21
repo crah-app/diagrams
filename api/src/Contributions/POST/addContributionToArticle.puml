@@ -1,5 +1,6 @@
 @startuml addContributionToArticle-Request
 !theme toy
+skinparam linetype ortho
 title "addContributionToArticle /api/contributions POST Request"
 
 json Data {
@@ -14,6 +15,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+Data --* Auth
 @enduml
 @startuml addContributionToArticle-Response
 !theme toy

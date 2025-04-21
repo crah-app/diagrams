@@ -1,6 +1,12 @@
 @startuml markAsApplied-Request
 !theme toy
+skinparam linetype ortho
 title "markAsApplied /api/contributions/:contributionId PATCH Request"
+
+
+json Data {
+    "applied": ""
+}
 
 ' Jwt of the creator of the post
 json Auth {
@@ -9,9 +15,11 @@ json Auth {
     "exp": ""
 }
 
-json Data {
-    "applied": ""
-}
+note bottom of Auth
+    JWT of the creator of the post
+end note
+
+Data --* Auth
 @enduml
 @startuml markAsApplied-Response
 !theme toy

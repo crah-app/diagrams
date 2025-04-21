@@ -1,5 +1,6 @@
 @startuml getContributionsOfUser-Request
 !theme toy
+skinparam linetype ortho
 title "getContributionsOfUser /api/contributions GET Request"
 
 json Data {
@@ -7,9 +8,14 @@ json Data {
     "offset": "",
     "limit": ""
 }
+
+note bottom of Data
+    By chunks: **offset**, **limit** required.
+end note 
 @enduml
 @startuml getContributionsOfUser-Response
 !theme toy
+skinparam linetype ortho
 title "getContributionsOfUser /api/contributions GET Response"
 
 package "contributions.zip" {
@@ -49,5 +55,7 @@ package "contributions.zip" {
             }
         ]
     }
+
+    "contributions.json" --o "pfps"
 }
 @enduml
