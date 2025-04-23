@@ -1,5 +1,6 @@
 @startuml createVideo-Request
 !theme toy
+skinparam linetype ortho
 title "createVideo /api/posts POST Request"
 
 package "post.zip" {
@@ -8,6 +9,10 @@ package "post.zip" {
     ' By default, if not uploaded or picked, the first frame
     ' of the video is sent
     file "post-cover.png"
+
+    note bottom of "post-cover.png"
+        The video cover is either uploaded or picked from a frame of the video
+    end note
 
     json "post.json" {
         "title": "",
@@ -30,6 +35,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"post.zip" --* Auth
 @enduml
 @startuml createVideo-Response
 !theme toy

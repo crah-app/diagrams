@@ -1,12 +1,16 @@
 @startuml createArticle-Request
 !theme toy
+skinparam linetype ortho
 title "createArticle /api/posts POST Request"
 
 package "post.zip" {
     ' Optional
     ' If no cover is given, a default image will be displayed
     file "post-cover.png"
-    file "post.md"
+
+    note bottom of "post-cover.png"
+        Optional, if not given then a default image will be displayed.
+    end note
 
     ' Optional
     ' Images available to the article, marked in `post.md` only using their ids.
@@ -14,10 +18,15 @@ package "post.zip" {
     ' Optional
     file "post-image-1.jpg"
 
+    note left of "post-image-0.png"
+        Option image displayed in the article. It is marked inside of **content**
+    end note
+
     json "post.json" {
         "title": "",
         "type": "",
         "description": "",
+        "content": "",
         ' People who worked on the article
         "partecipants": [
             {
@@ -28,6 +37,10 @@ package "post.zip" {
         ],
         "tags": []
     }
+
+    note bottom of "post.json"
+        Optional fields: **partecipants**, **tags**
+    end note
 }
 
 json Auth {
@@ -35,9 +48,13 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"post.zip" --* Auth
+
 @enduml
 @startuml createArticle-Response
 !theme toy
+skinparam linetype ortho
 title "createArticle /api/posts POST Response"
 
 json Data {

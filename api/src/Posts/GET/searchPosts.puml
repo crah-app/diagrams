@@ -1,5 +1,6 @@
 @startuml searchPosts-Request
 !theme toy
+skinparam linetype ortho
 title "searchPosts /api/posts GET Request"
 
 json Data {
@@ -15,31 +16,31 @@ json Data {
     "offset": ""
 }
 
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
+
 'Optional (only if friendsOnly=true)
 json Auth {
     "sub": "",
     "iat": "",
     "exp": ""
 }
+note right of Auth
+    Auth is only necessary if **friendsOnly** = true
+end note
+
+Data --o Auth
 @enduml
 @startuml searchPosts-Response
 !theme toy
+skinparam linetype ortho
 title "searchPosts /api/posts GET Response"
 
 package "posts.zip" {
-    folder "users" {
-        json "users.json" {
-            "users": [
-                {
-                    "userId": "",
-                    "username": ""
-                }
-            ]
-        }
 
-        folder "pfps" {
-            file "userId-pfp.png"
-        }
+    folder "pfps" {
+        file "userId-pfp.png"
     }
 
     folder "posts" {
@@ -47,27 +48,42 @@ package "posts.zip" {
             "posts": [
                 {
                 "postId": "",
-                "userId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
                 "title": "",
                 "type": "",
                 "description": "",
                 "timestamp": "",
                 ' Optional (only for Music and Video)
                 "duration": "",
-                "likes": "",
-                "comments": "",
+                "likesCount": "",
+                "commentsCount": "",
                 "views": "",
                 ' Optional (only for articles)
-                "contributions": ""
+                "contributionsCount": ""
                 }
             ]
         }
 
+        note bottom of "posts.json"
+            Optional fields: **duration**, **contributionsCount**
+        end note
+
+        note left of "posts.json"
+            **duration** is only if **type** = Music or Video
+            **contributionsCount** is only if **type** = Article
+        end note
+
         folder "covers" {
             file "postId-cover.png"
-            ' Photo posts use the first image in the sequence as cover
-            file "postId-image-0.png"
         }
+
+        "posts.json" --o "pfps"
+        "posts.json" --o "covers"
     }
 }
+
+
 @enduml

@@ -1,10 +1,14 @@
 @startuml createMusic-Request
 !theme toy
+skinparam linetype ortho
 title "createMusic /api/posts POST Request"
 
 package "post.zip" {
     file "post-cover.png"
-    file "post.mp3"
+
+    note bottom of "post-cover.png"
+        Optional, if not given then a default image will be displayed.
+    end note
 
     json "post.json" {
         "title": "",
@@ -20,6 +24,11 @@ package "post.zip" {
         ],
         "tags": []
     }
+
+
+    note bottom of "post.json"
+        Optional fields: **partecipants**, **tags**
+    end note
 }
 
 json Auth {
@@ -27,9 +36,12 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"post.zip" --* Auth
 @enduml
 @startuml createMusic-Response
 !theme toy
+skinparam linetype ortho
 title "createMusic /api/posts POST Response"
 
 json Data {

@@ -12,13 +12,6 @@ package "postUpdate.zip" {
         Optional
     end note
 
-    ' Optional (any update in the article)
-    file "postId.md"
-    
-    note left of "postId.md" 
-        Optional: for any change in the article
-    end note
-
     ' Optional (new image)
     file "post-image-4.png"
     ' Optional (new image)
@@ -33,6 +26,8 @@ package "postUpdate.zip" {
         "title": "",
         ' Optional
         "description": "",
+        ' Optional
+        "content": "",
         ' Optional
         ' If omitted, no changes are made.
         ' If present, adds the new ones and removes all the missing ones
@@ -50,7 +45,7 @@ package "postUpdate.zip" {
     }
 
     note bottom of "postUpdate.json" 
-        Optional fields: **title**, **description**, **tags**, **partecipants**
+        Optional fields: **title**, **description**, **content**, **tags**, **partecipants**
     end note
     
     note right of "postUpdate.json" 

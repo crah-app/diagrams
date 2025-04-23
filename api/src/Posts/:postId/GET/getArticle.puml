@@ -68,6 +68,7 @@ package "post.zip" {
         "timestamp": "",
         ' Diff (for `getNotifications`)
         "description": "",
+        "content": "",
         ' Diff (for `getNotifications`)
         "likes": "",
         ' Diff (for `getNotifications`)

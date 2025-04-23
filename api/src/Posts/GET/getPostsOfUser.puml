@@ -1,5 +1,6 @@
 @startuml getPostsOfUser-Request
 !theme toy
+skinparam linetype ortho
 title "getPostsOfUser /api/posts GET Request"
 
 json Data {
@@ -13,9 +14,15 @@ json Data {
     "limit": "",
     "offset": ""
 }
+
+note bottom of Data 
+    By chunks: **limit**, **offset** required.
+end note
+
 @enduml
 @startuml getPostsOfUser-Response
 !theme toy
+skinparam linetype ortho
 title "getPostsOfUser /api/posts GET Response"
 
 package "posts.zip" {

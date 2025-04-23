@@ -1,5 +1,6 @@
 @startuml createPhoto-Request
 !theme toy
+skinparam linetype ortho
 title "createPhoto /api/posts POST Request"
 
 package "post.zip" {
@@ -9,6 +10,12 @@ package "post.zip" {
     ' when a user gets his own article in case he wants to add
     ' any image
     file "postId-image-0.png"
+
+    note bottom of "postId-image-0.png"
+        Atleast one image has to be sent.
+        The postfix number is an identifier starting from 0.
+    end note
+
     ' Optional
     file "postId-image-1.jpg"
 
@@ -31,6 +38,10 @@ package "post.zip" {
         ' e.g "0, 1"
         "imageIdsSequence": ""
     }
+
+    note bottom of "post.json" 
+        **imageIdsSequence** the ids of the images in the displayed sequence.
+    end note
 }
 
 json Auth {
@@ -38,6 +49,8 @@ json Auth {
     "iat": "",
     "exp": ""
 }
+
+"post.zip" --* Auth
 @enduml
 @startuml createPhoto-Response
 !theme toy
