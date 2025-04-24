@@ -46,7 +46,10 @@ json Data {
                     "spot": "",
                     "date": ""
                 }
-            ]
+            ],
+            "types": [],
+            "isPinned": "",
+            "isTopFive": ""
         }
     ]
 }

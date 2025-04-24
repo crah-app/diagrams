@@ -5,7 +5,7 @@ title "updateTrick /api/tricks/:trickId PATCH Request"
 
 json Data {
     ' Optional
-    "name": "",
+    "parts": [],
     ' Optional
     "spots": [
         {
@@ -14,23 +14,25 @@ json Data {
         }
     ],
     ' Optional (If true pins the trick under the bio, max 5)
-    "pinned": "",
+    "isPinned": "",
     ' Look at `Tricks/POST/addNewTrick.puml` for explanations
     "confirmation": ""
 }
+
 note top of Data
-    Optional fields: **name**, **spots**, **pinned**
+    Optional fields: **parts**, **spots**, **isPinned**
 end note
 
 note left of Data
-    If **pinned** = true, the trick is pinned under the bio (maximum 5 tricks).
+    If **isPinned** = true, the trick is pinned under the bio (maximum 5 tricks).
 end note
 
 note bottom of Data
     **confirmation** should be true when the user wants to actually post the trick,
     while when creating the trick, a request with **confirmation** = false 
-    tells the server to calculate the points of the trick, keep them stored in a 
-    temporary table, and send them to the frontend for preview.
+    tells the server to calculate the points of the trick and add it to the AllTricks table
+    if not already present, keep the AllTricksId stored in a temporary table,
+    and send the AllTricksData to the frontend for preview.
     
     This way we avoid:
     - sending the points from the client, so we are sure they are genuine
@@ -51,11 +53,10 @@ Data *-- Auth
 skinparam linetype ortho
 title "updateTrick /api/tricks/:trickId PATCH Response"
 json Data {
-    ' Optional
-    "points": ""
+    "points": "",
+    "types": [],
+    "trickRanking": "",
+    "hardestSpot": "",
+    "firstTimeLanded": ""
 }
-
-note top of Data
-    Optional fields: **points**
-end note
 @enduml
