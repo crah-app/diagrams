@@ -1,0 +1,14 @@
+@startuml withdrawFriendshipRequest-Request
+!theme toy
+title "withdrawFriendshipRequest /api/friendshipRequests/{friendshipRequestId} DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml withdrawFriendshipRequest-Response
+!theme toy
+title "withdrawFriendshipRequest /api/friendshipRequests/{friendshipRequestId} DELETE Response"
+@enduml

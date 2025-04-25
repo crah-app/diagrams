@@ -1,0 +1,14 @@
+@startuml abortUpload-Request
+!theme toy
+title "abortUpload /api/posts/{postId}/stream DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml abortUpload-Response
+!theme toy
+title "abortUpload /api/posts/{postId}/stream DELETE Response"
+@enduml

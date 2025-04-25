@@ -1,0 +1,144 @@
+@startuml getMusic-Request
+!theme toy
+skinparam linetype ortho
+title "getMusic /api/posts/{postId} GET Request"
+
+json Data {
+    ' Optional
+    ' If missing, the full data is retrieved, e.g when accessing the post from a direct link
+    ' Othervise we assume that the client already owns partial data
+    ' about the post, as most part of the metadata, the cover ecc.
+    ' 
+    ' previousView should be set to the latest usecase, like
+    ' `searchPosts` or `getNotifications` or `getPostsOfUser`
+    ' and the server will respond appropriately.
+    "previousView": ""
+} 
+
+note top of Data 
+    Optional fields: **previousView**
+end note
+
+note bottom of Data 
+    if missing **previousView**, the full data is retrieved,
+    e.g when accessing the post from a direct link.
+    Otherwise we assume that the client already owns partial data
+    about the post, as most part of the metadata, the cover ecc.
+
+    **previousView** should be set to the latest usecase, like
+    searchPosts or getNotifications or getPostsOfUser
+    and the server will respond appropriately.
+end note
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+
+Data --o Auth
+@enduml
+@startuml getMusic-Response
+!theme toy
+skinparam linetype ortho
+title "getMusic /api/posts/{postId} GET Response"
+
+package "post.zip" {
+
+    ' Diff
+    folder "pfps" {
+        file "userId-pfp.png"
+    }
+
+    ' Diff (for `getNotifications`)
+    file "postId-cover.png"
+
+    json "post.json" {
+        "postId": "",
+        "user": {
+            "userId": "",
+            "username": ""
+        },
+        "title": "",
+        "type": "",
+        "timestamp": "",
+        ' Diff (for `getNotifications`)
+        "description": "",
+        ' Diff (for `getNotifications`)
+        "likes": "",
+        ' Diff (for `getNotifications`)
+        "comments": "",
+        ' Diff (for `getNotifications`)
+        "views": "",
+        "duration": "",
+        ' Diff
+        "partecipants": [
+            {
+                "role": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                }
+            }
+        ],
+        ' Diff (for `getNotifications`)
+        "tags": [],
+        ' Optional (if auth is provided & the user has liked)
+        "userLikeId": "",
+        ' Optional (if auth is provided & the user has reacted)
+        "userReaction": {
+            ' Necessary to know wich emoji to highlight
+            "emojiId": "",
+            ' Necessary if the user decides to remove it.
+            "reactionId": ""
+        },
+        ' Grouped reactions
+        "reactions": [
+            {
+                "emojiId": "",
+                "counter": ""
+            }
+        ]
+    }
+
+    note bottom of "post.json"
+        Optional fields: **userLikeId**, **userReaction**
+    end note
+
+    note left of "post.json"
+        **reactions** are grouped, no informations about the users
+    end note
+
+    note top of "post.json"
+        **userLikeId** if the user has liked, so he can
+        remove the like if he wants.
+    end note
+    
+    "post.json" --o "pfps"
+
+    ' Diff
+    ' First chunk of comments
+    json "comments.json" {
+        "comments": [
+            {
+                "commentId": "",
+                "user": {
+                    "userId": "",
+                    "username": ""
+                },
+                "timestamp": "",
+                "text": "",
+                "likes": ""
+            }
+        ],
+        "limit": "",
+        "offset": ""
+    }
+
+    note top of "comments.json"
+        First chunk of comments
+    end note
+
+    "comments.json" --o "pfps"
+}
+@enduml

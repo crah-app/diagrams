@@ -13,7 +13,7 @@ sub lcfirst($s) {
 }
 
 # Opens the PlantUML diagram file passed as argument
-my $API = open 'api.puml', :r or die "Could not open file: $!";
+my $API = open 'src/api.puml', :r or die "Could not open file: $!";
 my @API = $API.lines;
 
 # Stores the last object name e.g Tricks
@@ -27,7 +27,7 @@ my $lastMethod;
 my $theme = "toy";
 
 for @API -> $line {
-	if ($line ~~ rx/(\*+)\s+(\w+)\s*\/?(\w+)?\/?(\w+)?\/?(\:?\w+)?\/?(\w+)?/) {
+	if ($line ~~ rx/(\*+)\s+(\w+)\s*\/?(\w+)?\/?(\w+)?\/?\{?(\w+)?\}?\/?(\w+)?/) {
 		given $0.chars {
 
 			# This is an object
@@ -35,7 +35,7 @@ for @API -> $line {
 			when 2 {
 				$lastObject = $1;
 
-				my $path = "$*CWD/$lastObject";
+				my $path = "$*CWD/src/$lastObject";
 				unless $path.IO.d {
 					mkdir $path;
 				}
@@ -55,16 +55,16 @@ for @API -> $line {
 			# e.g Endpoint /api/posts/:postId, GET, PUT
 			when 4 {
 				if $4 ne "" {
-					$lastEndpointId = $4;
+					$lastEndpointId = "\{$4\}";
 
-					my $path = "$*CWD/$lastObject/$lastEndpointId";
+					my $path = "$*CWD/src/$lastObject/$lastEndpointId";
 					unless $path.IO.d {
 						mkdir $path;
 					}
 				} else {
 					$lastMethod = $1;
 
-					my $path = "$*CWD/$lastObject/$lastMethod";
+					my $path = "$*CWD/src/$lastObject/$lastMethod";
 					unless $path.IO.d {
 						mkdir $path;
 					}
@@ -81,25 +81,27 @@ for @API -> $line {
 					# e.g /api/posts/:postId/streamVideo
 					if $5 ne "" {
 						$lastEndpointId = $lastEndpointId ~ "/$5";
-						$path = "$*CWD/$lastObject/$lastEndpointId";
+						$path = "$*CWD/src/$lastObject/$lastEndpointId";
 					} else {
 						$lastMethod = $1;
-						$path = "$*CWD/$lastObject/$lastEndpointId/$lastMethod";
+						$path = "$*CWD/src/$lastObject/$lastEndpointId/$lastMethod";
 					}
 
 					unless $path.IO.d {
 						mkdir $path;
 					}
 				} else {
-					my $path = "$*CWD/$lastObject/$lastMethod/{@(lcfirst($1))}.puml";
+					my $path = "$*CWD/src/$lastObject/$lastMethod/{@(lcfirst($1))}.puml";
 					unless $path.IO.e {
 						my $uc = open $path, :w;
 						$uc.say("@startuml {@(lcfirst($1))}-Request");
 						$uc.say("!theme $theme");
+						$uc.say("skinparam linetype ortho");
 						$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))} $lastMethod Request\"");
 						$uc.say('@enduml');
 						$uc.say("@startuml {@(lcfirst($1))}-Response");
 						$uc.say("!theme $theme");
+						$uc.say("skinparam linetype ortho");
 						$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))} $lastMethod Response\"");
 						$uc.say('@enduml');
 						$uc.close;
@@ -113,20 +115,22 @@ for @API -> $line {
 				# this is a method
 				if $1 eq uc($1) {
 					$lastMethod = $1;
-					my $path = "$*CWD/$lastObject/$lastEndpointId/$lastMethod";
+					my $path = "$*CWD/src/$lastObject/$lastEndpointId/$lastMethod";
 					unless $path.IO.d {
 						mkdir $path;
 					}
 				} else {
-					my $path = "$*CWD/$lastObject/$lastEndpointId/$lastMethod/{@(lcfirst($1))}.puml";
+					my $path = "$*CWD/src/$lastObject/$lastEndpointId/$lastMethod/{@(lcfirst($1))}.puml";
 					unless $path.IO.e {
 						my $uc = open $path, :w;
 						$uc.say("@startuml {@(lcfirst($1))}-Request");
 						$uc.say("!theme $theme");
+						$uc.say("skinparam linetype ortho");
 						$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))}/$lastEndpointId $lastMethod Request\"");
 						$uc.say('@enduml');
 						$uc.say("@startuml {@(lcfirst($1))}-Response");
 						$uc.say("!theme $theme");
+						$uc.say("skinparam linetype ortho");
 						$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))}/$lastEndpointId $lastMethod Response\"");
 						$uc.say('@enduml');
 						$uc.close;
@@ -137,15 +141,17 @@ for @API -> $line {
 			# This is a sub usecase
 			# e.g streamVideo
 			when 7 {
-				my $path = "$*CWD/$lastObject/$lastEndpointId/$lastMethod/{@(lcfirst($1))}.puml";
+				my $path = "$*CWD/src/$lastObject/$lastEndpointId/$lastMethod/{@(lcfirst($1))}.puml";
 				unless $path.IO.e {
 					my $uc = open $path, :w;
 					$uc.say("@startuml {@(lcfirst($1))}-Request");
 					$uc.say("!theme $theme");
+					$uc.say("skinparam linetype ortho");
 					$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))}/$lastEndpointId $lastMethod Request\"");
 					$uc.say('@enduml');
 					$uc.say("@startuml {@(lcfirst($1))}-Response");
 					$uc.say("!theme $theme");
+					$uc.say("skinparam linetype ortho");
 					$uc.say("title \"{@(lcfirst($1))} /api/{@(lcfirst($lastObject))}/$lastEndpointId $lastMethod Response\"");
 					$uc.say('@enduml');
 					$uc.close;

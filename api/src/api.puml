@@ -14,7 +14,7 @@
 **** POST
 ' Auth Required
 ***** addNewTrick
-**** Endpoint /api/tricks/:trickId
+**** Endpoint /api/tricks/{trickId}
 ***** PATCH
 ' Auth Required
 ****** updateTrick
@@ -43,7 +43,7 @@
 ***** createVideo
 ' Auth Required
 ***** createPhoto
-**** Endpoint /api/posts/:postId
+**** Endpoint /api/posts/{postId}
 ' For uploading a video to a video that hasn't been fully commited yet
 
 ***** GET
@@ -64,7 +64,7 @@
 ***** DELETE
 ' Auth Required
 ****** deletePost
-***** Endpoint /api/posts/:postId/stream
+***** Endpoint /api/posts/{postId}/stream
 ****** GET
 ******* streamVideo
 ******* streamMusic
@@ -80,7 +80,7 @@
 '*** Endpoint /api/users
 '**** GET
 '**** POST
-'**** Endpoint /api/users/:userId
+'**** Endpoint /api/users/{userId}
 '***** GET
 '***** PUT
 '***** DELETE
@@ -97,7 +97,7 @@
 **** POST
 ' Auth Required
 ***** addCommentToPost
-**** Endpoint /api/comments/:commentId
+**** Endpoint /api/comments/{commentId}
 ***** PUT
 ' Auth Required
 ****** editComment
@@ -113,7 +113,7 @@
 **** POST
 ' Auth Required
 ***** likeAComment
-**** Endpoint /api/commentLikes/:commentLikeId
+**** Endpoint /api/commentLikes/{commentLikeId
 ***** DELETE
 ' Auth Required
 ****** removeLikeFromComment
@@ -128,7 +128,7 @@
 **** POST
 ' Auth Required
 ***** likeAPost
-**** Endpoint /api/likes/:likeId
+**** Endpoint /api/likes/{likeId}
 ***** DELETE
 ' Auth Required
 ****** removeLikeFromPost
@@ -141,7 +141,7 @@
 **** POST
 ' Auth Required
 ***** addReactionToPost
-**** Endpoint /api/reactions/:reactionId
+**** Endpoint /api/reactions/{reactionId}
 ***** DELETE
 ' Auth Required
 ****** removeReaction
@@ -160,7 +160,7 @@
 **** POST
 ' Auth Required
 ***** addContributionToArticle
-**** Endpoint /api/contributions/:contributionId
+**** Endpoint /api/contributions/{contributionId}
 ***** GET
 ' Load only what's missing
 ****** getContribution
@@ -181,7 +181,7 @@
 **** POST
 ' Auth Required
 ***** likeAContribution
-**** Endpoint /api/contributionLikes/:contributionLikeId
+**** Endpoint /api/contributionLikes/{contributionLikeId}
 ***** DELETE
 ' Auth Required
 ****** removeLikeFromContribution
@@ -194,7 +194,7 @@
 **** POST
 ' Auth Required
 ***** dislikeAContribution
-**** Endpoint /api/contributionDislikes/:contributionDislikeId
+**** Endpoint /api/contributionDislikes/{contributionDislikeId}
 ***** DELETE
 ' Auth Required
 ****** removeDislikeFromContribution
@@ -204,7 +204,7 @@
 **** POST
 ' Auth Required
 ***** addCommentToContribution
-**** Endpoint /api/contributionComments/:contributionCommentId
+**** Endpoint /api/contributionComments/{contributionCommentId}
 ***** PUT
 ' Auth Required
 ****** editContributionComment
@@ -220,7 +220,7 @@
 **** POST
 ' Auth Required
 ***** likeAContributionComment
-**** Endpoint /api/contributionCommentLikes/:contributionCommentLikeId
+**** Endpoint /api/contributionCommentLikes/{contributionCommentLikeId}
 ***** DELETE
 ' Auth Required
 ****** removeLikeFromContributionComment
@@ -233,7 +233,7 @@
 **** POST
 ' Auth Required
 ***** dislikeAContributionComment
-**** Endpoint /api/contributionCommentDislikes/:contributionCommentDislikeId
+**** Endpoint /api/contributionCommentDislikes/{contributionCommentDislikeId}
 ***** DELETE
 ' Auth Required
 ****** removeDislikeFromContributionComment
@@ -243,7 +243,7 @@
 **** POST
 ' Auth Required
 ***** followUser
-**** Endpoint /api/follows/:followId
+**** Endpoint /api/follows/{followId}
 ***** DELETE
 ' Auth Required
 ****** stopFollowingUser
@@ -263,7 +263,7 @@
 **** GET
 ' Auth Required
 ***** getFriendsOfUser
-**** Endpoint /api/friends/:friendId
+**** Endpoint /api/friends/{friendId}
 ***** DELETE
 ' Auth Required
 ****** removeUserFromFriends
@@ -273,7 +273,7 @@
 **** POST
 ' Auth Required
 ***** sendFriendshipRequestToUser
-**** Endpoint /api/friendshipRequests/:friendshipRequestId
+**** Endpoint /api/friendshipRequests/{friendshipRequestId}
 ***** DELETE
 ' Auth Required
 ****** refuseFriendshipRequest

@@ -1,0 +1,13 @@
+@startuml removeUserFromFriends-Request
+!theme toy
+title "removeUserFromFriends /api/friends/{friendId} DELETE Request"
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeUserFromFriends-Response
+!theme toy
+title "removeUserFromFriends /api/friends/{friendId} DELETE Response"
+@enduml

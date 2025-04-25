@@ -1,0 +1,14 @@
+@startuml deletePost-Request
+!theme toy
+title "deletePost /api/posts/{postId} DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml deletePost-Response
+!theme toy
+title "deletePost /api/posts/{postId} DELETE Response"
+@enduml

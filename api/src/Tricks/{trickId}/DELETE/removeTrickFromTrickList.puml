@@ -1,0 +1,14 @@
+@startuml removeTrickFromTrickList-Request
+!theme toy
+title "removeTrickFromTrickList /api/tricks/{trickId} DELETE Request"
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+@enduml
+@startuml removeTrickFromTrickList-Response
+!theme toy
+title "removeTrickFromTrickList /api/tricks/{trickId} DELETE Response"
+@enduml

@@ -1,0 +1,18 @@
+@startuml streamVideo-Request
+!theme toy
+title "streamVideo /api/posts/{postId}/stream GET Request"
+
+json Data {
+    "size": ""
+}
+@enduml
+@startuml streamVideo-Response
+!theme toy
+title "streamVideo /api/posts/{postId}/stream GET Response"
+
+file "postId.mp4"
+
+note left of "postId.mp4"
+    Stream of bytes
+end note
+@enduml

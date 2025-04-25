@@ -1,0 +1,21 @@
+@startuml editContributionComment-Request
+!theme toy
+skinparam linetype ortho
+title "editContributionComment /api/contributionComments/{contributionCommentId} PUT Request"
+
+json Data {
+    "text": ""
+}
+
+json Auth {
+    "sub": "",
+    "iat": "",
+    "exp": ""
+}
+
+Data --* Auth
+@enduml
+@startuml editContributionComment-Response
+!theme toy
+title "editContributionComment /api/contributionComments/{contributionCommentId} PUT Response"
+@enduml
